@@ -37,6 +37,32 @@ Before deploying the Lambda function, ensure:
    - Environment: No special variables needed unless customising
 
 ---
+import boto3
+
+ses = boto3.client('ses', region_name='eu-west-1')  
+def lambda_handler(event, context):
+    response = ses.send_email(
+        Source='musej146@gmail.com',
+        Destination={
+            'ToAddresses': ['musej146@gmail.com']
+        },
+        Message={
+            'Subject': {
+                'Data': 'Test Email from Lambda'
+            },
+            'Body': {
+                'Text': {
+                    'Data': 'This is a test email sent using AWS Lambda and SES.'
+                }
+            }
+        }
+    )
+    
+    return {
+        'statusCode': 200,
+        'body': f"Email sent. Message ID: {response['MessageId']}"
+    }
+
 
 ## 📦 File Structure
 
