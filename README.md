@@ -44,9 +44,9 @@ import boto3
 ses = boto3.client('ses', region_name='eu-west-1')  
 def lambda_handler(event, context):
     response = ses.send_email(
-        Source='musej146@gmail.com',
+        Source='emailaddress',
         Destination={
-            'ToAddresses': ['musej146@gmail.com']
+            'ToAddresses': ['emailaddress']
         },
         Message={
             'Subject': {
