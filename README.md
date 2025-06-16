@@ -38,6 +38,7 @@ Before deploying the Lambda function, ensure:
 
 ---
 Code used for Project
+---
 import boto3
 
 ses = boto3.client('ses', region_name='eu-west-1')  
